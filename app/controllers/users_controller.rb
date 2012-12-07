@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    flash[:alert] = "User creation is disabled because you are using LDAP authentication."
+    redirect_to(root_path)
   end
 
   def create
