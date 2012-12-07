@@ -23,6 +23,16 @@ class User
 
   has_many :apps, :foreign_key => 'watchers.user_id'
 
+  before_save :set_ldap_email
+  def set_ldap_email
+    self.email = Devise::LdapAdapter.get_ldap_param(self.username, "mail")
+  end
+
+  before_save :set_ldap_cn
+  def set_ldap_cn
+    self.name = Devise::LdapAdapter.get_ldap_param(self.username, "cn")
+  end
+
   if Errbit::Config.user_has_username
     field :username
     validates_presence_of :username

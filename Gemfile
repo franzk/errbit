@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'mongoid', '~> 2.4.10'
 gem 'mongoid_rails_migrations'
 gem 'devise', '~> 1.5.4'
+gem "devise_ldap_authenticatable"
 gem 'haml'
 gem 'htmlentities', "~> 4.3.0"
 gem 'rack-ssl', :require => 'rack/ssl'   # force SSL

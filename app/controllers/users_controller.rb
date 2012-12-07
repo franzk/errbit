@@ -34,6 +34,11 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
 
+    # Do not update these attribute because we use ldap
+    params[:user].delete(:name)
+    params[:user].delete(:username)
+    params[:user].delete(:email)
+
     # Set protected attributes
     @user.admin = params[:user][:admin] if current_user.admin?
 
